@@ -1,0 +1,57 @@
+<?php
+
+
+function Connect()
+{
+ $dbhost = "localhost";
+ $dbuser = "root";
+ $dbpass = "";
+ $dbname = "mumbaitrip";
+
+ // Create connection
+ $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname) or die($conn->connect_error);
+
+ return $conn;
+}
+ 
+?>..................
+......................
+......................
+.,................
+
+<?php
+
+require 'connection.php';
+$conn    = Connect();
+$name    = $conn->real_escape_string($_POST['u_name']);
+$email   = $conn->real_escape_string($_POST['u_email']);
+$StreetAddress = $conn->real_escape_string($_POST['u_address']);
+$City = $conn->real_escape_string($_POST['u_city']);
+$State = $conn->real_escape_string($_POST['u_state']);
+$Postal = $conn->real_escape_string($_POST['u_postal']);
+$Country = $conn->real_escape_string($_POST['u_country']);
+$Phone = $conn->real_escape_string($_POST['u_phone']);
+$ArrivalDate = $conn->real_escape_string($_POST['u_arrival']);
+$DepartureDate = $conn->real_escape_string($_POST['u_departure']);
+$FreePickup = $conn->real_escape_string($_POST['q1']);
+$BusCompany = $conn->real_escape_string($_POST['u_bus']);
+$Busnumber = $conn->real_escape_string($_POST['u_busnumber']);
+$Flightnumber = $conn->real_escape_string($_POST['u_flight']);
+$Taxi = $conn->real_escape_string($_POST['u_car']);
+$Other = $conn->real_escape_string($_POST['u_other']);
+$Details = $conn->real_escape_string($_POST['u_details']);
+$SpecialRequests = $conn->real_escape_string($_POST['q53_specialRequests53']);
+$query   = "INSERT into tb_cform (u_name,u_email,u_address,u_city,u_state,u_postal,u_country,u_phone,u_arrival,u_departure,u_q1,u_bus,u_busnumber,u_flight,u_car,u_other,u_details,q53_specialRequests53) 
+VALUES('" . $name . "','" . $email . "','" . $StreetAddress . "','" . $City . "','" . $State . "','" . $Postal . "','" . $Country . "','" . $Phone . "','" . $ArrivalDate . "','" . $DepartureDate . "','" . $FreePickup . "','" . $BusCompany . "','" . $Busnumber . "','" . $Flightnumber . "','" . $Taxi . "','" . $Other . "','" . $Details . "','" . $SpecialRequests . "')";
+$success = $conn->query($query);
+
+if (!$success) {
+    die("Couldn't enter data: ".$conn->error);
+
+}
+
+echo "Thank You For Contacting Us <br>";
+
+$conn->close();
+
+?>

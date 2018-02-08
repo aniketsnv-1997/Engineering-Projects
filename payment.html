@@ -1,0 +1,48 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>Payment Method</title>
+    <script type="text/javascript" src="js/formcalculations.js"></script>
+    <link href="css/cakeform.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload='hideTotal()'>
+    <div id="wrap">
+        <form action="" id="cakeform" onsubmit="return false;">
+        <div>
+            <div class="cont_order">
+               <fieldset>
+                <legend>Payment Method</legend>
+                <label >No. Of Rooms</label>
+                <label class='radiolabel'><input type="radio"  name="selectedcake" value="Round6" onclick="calculateTotal()" />1" - Room ($300)</label><br/>
+                <label class='radiolabel'><input type="radio"  name="selectedcake" value="Round8" onclick="calculateTotal()" />2" - Room ($600)</label><br/>
+                <label class='radiolabel'><input type="radio"  name="selectedcake" value="Round10" onclick="calculateTotal()" />3" - Room($900)</label><br/>
+                <label class='radiolabel'><input type="radio"  name="selectedcake" value="Round12" onclick="calculateTotal()" />4" - Room($1200)</label><br/>
+                <br/>
+                <label >Offers</label>
+         
+                <select id="filling" name='filling' onchange="calculateTotal()">
+                <option value="None">Select Offers</option>
+                <option value="Lemon">Mater card</option>
+                <option value="Custard">Visa Card</option>
+                <option value="Fudge">Net Banking</option>
+               </select>
+                <br/>
+                <p>
+                <label for='includecandles' class="inlinelabel">Special Decorations($20)</label>
+               <input type="checkbox" id="includecandles" name='includecandles' onclick="calculateTotal()" />
+               </p>
+               
+                <div id="totalPrice"></div>
+                
+                </fieldset>
+            </div>
+            
+            <input type='submit' id='submit' value='Submit' onclick="calculateTotal()" />
+        </div>  
+       </form>
+	</div><!--End of wrap-->
+
+</body>
+</html>
